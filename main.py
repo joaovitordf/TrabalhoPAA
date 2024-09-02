@@ -16,19 +16,19 @@ class Grafo:
         self.grafo_dict = {}
         self.cores = {}
 
-    def adiciona_no(self, node):
-        if node not in self.grafo_dict:
-            self.grafo_dict[node] = []
-            self.cores[node] = None
+    def adiciona_no(self, no):
+        if no not in self.grafo_dict:
+            self.grafo_dict[no] = []
+            self.cores[no] = None
 
-    def adiciona_aresta(self, node1, node2):
-        self.grafo_dict[node1].append(node2)
-        self.grafo_dict[node2].append(node1)
+    def adiciona_aresta(self, no1, no2):
+        self.grafo_dict[no1].append(no2)
+        self.grafo_dict[no2].append(no1)
 
     def print_grafo(self):
-        for node in self.grafo_dict:
-            vizinhos = ", ".join(map(str, self.grafo_dict[node]))
-            print(f"{node}: {vizinhos}")
+        for no in self.grafo_dict:
+            vizinhos = ", ".join(map(str, self.grafo_dict[no]))
+            print(f"{no}: {vizinhos}")
 
     def num_vertices(self):
         return len(self.grafo_dict)
@@ -73,8 +73,8 @@ class Grafo:
             return None
         
     def mostra_cores(self):
-        for node, cor in self.cores.items():
-            print(f"Vértice {node} -> Cor {cor}")
+        for no, cor in self.cores.items():
+            print(f"Vértice {no} -> Cor {cor}")
             
     def colore_grafo_guloso(self, m):
         vertices_com_graus = []
