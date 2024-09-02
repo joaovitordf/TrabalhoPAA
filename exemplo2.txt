@@ -1,0 +1,16 @@
+grafo = Graph()
+    max_cores = 100
+    tempos = [30]
+
+    stop_event = threading.Event()
+
+    thread_cronometro = threading.Thread(target=cronometro, args=(tempos, stop_event))
+    thread_cronometro.start()
+
+    resultados = grafo.testa_tamanho_maximo(max_cores, stop_event)
+    
+    for tempo, tamanho in resultados.items():
+        print(f"Maior instância resolvida em {tempo} segundos: {tamanho} vértices")
+
+    # Aguarda a finalização do cronômetro
+    thread_cronometro.join()
